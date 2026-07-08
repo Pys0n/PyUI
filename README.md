@@ -9,7 +9,7 @@ from pyui import PyUI
 pyui = PyUI()
 ```
 
-### .___str__() -> str
+### .\_\__str\_\_() -> str
 Returns the UI as multiline string.
 
 This function allows you to use `str(pyui)` and `print(pyui)`.
@@ -84,7 +84,7 @@ label = Label('Text', 100)
 The default text is `''` and the default length is `80`.
 
 
-#### .__str__() -> str
+#### .\_\_str\_\_() -> str
 Returns the label as a (multiline) string.
 
 
