@@ -12,8 +12,14 @@ class Header(Label):
 
     
     def output(self) -> list:
+        '''
+        Returns the header as string inside of a list.
+        '''
         return [str(self).strip()]
 
 
     def __str__(self) -> str:
+        '''
+        Returns the header as string.
+        '''
         return TextStyles.ALL + super().__str__()

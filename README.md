@@ -66,6 +66,33 @@ Updates the UI's size to the terminal size and returns the new size as tuple (`(
 
 ### Header
 
+To create a new Header use these lines of code:
+```python
+from widgets import Header
+
+Header = Header()
+```
+
+Optionally, you can give the Header a text and a length when creating:
+```python
+Header = Header('Text', 100)
+```
+
+The default text is `''` and the default length is `80`.
+
+
+`Header` inherits *all* functions from `Label`, except `output()` and `__str__()`.
+
+
+#### .\_\_str\_\_() -> str
+Returns the header as string.
+
+
+#### .output() -> list
+Returns the header as string inside of a list.
+
+**Headers are not allowed to be multiline Headers!**
+
 
 ### Label
 
@@ -76,7 +103,7 @@ from widgets import Label
 label = Label()
 ```
 
-Optionally, you can give the label a name and a length when creating:
+Optionally, you can give the label a text and a length when creating:
 ```python
 label = Label('Text', 100)
 ```
