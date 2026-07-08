@@ -69,6 +69,80 @@ Updates the UI's size to the terminal size and returns the new size as tuple (`(
 
 ### Label
 
+To create a new Label use these lines of code:
+```python
+from widgets import Label
+
+label = Label()
+```
+
+Optionally, you can give the label a name and a length when creating:
+```python
+label = Label('Text', 100)
+```
+
+The default text is `''` and the default length is `80`.
+
+
+#### .__str__() -> str
+Returns the label as a (multiline) string.
+
+
+#### .get_select() -> bool
+Returns `True` if the label is selected.
+This can be set by using `.set_select()`.
+
+
+#### .get_selectable() -> bool
+Returns `True` if the label is selectable.
+This can be set by using `.set_selectable()`.
+
+
+#### .get_spacer() -> int
+Returns the number of spaces before and after the widgets main content.
+This can be set by using `.set_spacer()`.
+
+
+#### .get_text() -> str
+Returns the current text of the label.
+
+
+#### .output() -> list
+Returns the label splited at newlines as list.
+
+
+#### .set_background_color(background_color: BackgroundColor) -> None
+Sets the background color of the label.
+
+
+#### .set_select(select: bool) -> None
+If `select` equals `True`, use the selected color instead of the background color as background color.
+
+
+#### .set_selectable(selectable: bool) -> None
+If `selectable` equals `False`, the PyUI of this label is not going to select it and instead skips it.
+
+A label is by default not selectable.
+
+
+#### .set_selected_color(selected_color: BackgroundColor) -> None
+Sets the background color when selected / hovered.
+
+
+#### .set_spacer(spacer: int) -> None
+Sets the number of spaces before and after the widgets main content.
+
+
+#### .set_text_color(text_color: TextColor) -> None
+Sets the color of the labels text.
+
+
+#### .set_text(text: str) -> None
+Sets the labels text to the value of `text`.
+
+If the text contains newlines (`\n`) the label will be a multiline label.
+
+
 
 ### ToggleSwitch
 
