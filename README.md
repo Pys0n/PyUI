@@ -70,12 +70,12 @@ To create a new Header use these lines of code:
 ```python
 from widgets import Header
 
-Header = Header()
+header = Header()
 ```
 
 Optionally, you can give the Header a text and a length when creating:
 ```python
-Header = Header('Text', 100)
+header = Header('Text', 100)
 ```
 
 The default text is `''` and the default length is `80`.
