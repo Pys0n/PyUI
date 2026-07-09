@@ -20,10 +20,16 @@ class Button(Label):
 
     
     def press(self) -> None:
+        '''
+        Calls the function set with `.on_press()`.
+        '''
         self.on_press_do()
 
 
     def on_press(self, function) -> None:
+        '''
+        Sets the function that gets called when using `.press()` to `function`.
+        '''
         if not callable(function):
             raise TypeError(f'Expected function, got {type(function).__name__}')
         
@@ -31,14 +37,24 @@ class Button(Label):
 
 
     def disconnect(self) -> None:
+        '''
+
+        Resets the function that gets called when using `.press()`.
+        '''
         self.on_press_do = nothing
 
     
     def output(self) -> list:
+        '''
+        Returns the button as string inside of a list.
+        '''
         return [str(self).strip()]
 
 
     def __str__(self) -> str:
+        '''
+        Returns the button as string.
+        '''
         label = (self.background_color if not self.selected else self.selected_color) + self.spacer * ' ' + self.text_color + '[ ' + self.text + ' ]' + self.spacer * ' ' + ' ' * (self.length - (len(self.text) + self.spacer * 2 + 4)) + TextColor.RESET
 
         return label

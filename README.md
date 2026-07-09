@@ -63,6 +63,51 @@ Updates the UI's size to the terminal size and returns the new size as tuple (`(
 
 ### Button
 
+To create a new Button use these lines of code:
+```python
+from widgets import Button
+
+button = Button()
+```
+
+Optionally, you can give the Button a text and a length when creating:
+```python
+button = Button('Text', 100)
+```
+
+The default text is `''` and the default length is `80`.
+
+
+`Button` inherits *all* functions from `Label`, except `.output()` and `.__str__()` and has three unqiue functions: `.press()`, `.on_press()` and `.disconnect()`.
+
+
+#### .\_\_str\_\_() -> str
+Returns the button as string.
+
+
+#### .disconnect() -> None
+Resets the function that gets called when using `.press()`.
+
+This function by default does nothing.
+
+
+#### .on_press(function) -> None
+Sets the function that gets called when using `.press()` to `function`.
+
+This function by default does nothing.
+
+
+#### .output() -> list
+Returns the button as string inside of a list.
+
+**Buttons are not allowed to be multiline Buttons!**
+
+
+#### .press() -> None
+Calls the function set with `.on_press()`.
+
+This function by default does nothing.
+
 
 ### Header
 
@@ -81,7 +126,7 @@ header = Header('Text', 100)
 The default text is `''` and the default length is `80`.
 
 
-`Header` inherits *all* functions from `Label`, except `output()` and `__str__()`.
+`Header` inherits *all* functions from `Label`, except `.output()` and `.__str__()`.
 
 
 #### .\_\_str\_\_() -> str
