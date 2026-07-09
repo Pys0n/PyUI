@@ -30,6 +30,9 @@ class ToggleSwitch(Label):
 
 
     def set_on_color(self, on_color: TextColor) -> None:
+        '''
+        Sets the color of the toggle switch to `on_color` when the current state equals on.
+        '''
         if not isinstance(on_color, str):
             raise TypeError(f'Expected TextColor, got {type(on_color).__name__}')
     
@@ -37,6 +40,9 @@ class ToggleSwitch(Label):
 
 
     def set_off_color(self, off_color: TextColor) -> None:
+        '''
+        Sets the color of the toggle switch to `off_color` when the current state equals off.
+        '''
         if not isinstance(off_color, str):
             raise TypeError(f'Expected TextColor, got {type(off_color).__name__}')
     
@@ -44,6 +50,9 @@ class ToggleSwitch(Label):
 
 
     def set_track_color(self, track_color: TextColor) -> None:
+        '''
+        Sets the color of the toggle switch track to `track_color`.
+        '''
         if not isinstance(track_color, str):
             raise TypeError(f'Expected TextColor, got {type(track_color).__name__}')
     
@@ -51,6 +60,12 @@ class ToggleSwitch(Label):
 
     
     def toggle(self) -> bool:
+        '''
+        If the current state of the toggle switch is on, set the state to off and return `False` (the new state).
+        If the current state of the toggle switch is off, set the state to on and return `True` (the new state).
+        
+        Calls the function set with `.on_toggle()`.
+        '''
         self.state = not self.state
         
         self.on_toggle_do(self.state)
@@ -59,6 +74,9 @@ class ToggleSwitch(Label):
     
 
     def on_toggle(self, function) -> None:
+        '''
+        Sets the function that gets called when using `.toggle()` to `function`.
+        '''
         if not callable(function):
             raise TypeError(f'Expected function, got {type(function).__name__}')
 
@@ -66,10 +84,16 @@ class ToggleSwitch(Label):
 
     
     def disconnect(self) -> None:
+        '''
+        Resets the function that gets called when using `.toggle()` to `function`.
+        '''
         self.on_toggle_do = nothing
 
     
     def set_text_spacer(self, text_spacer: int) -> None:
+        '''
+        Sets the size of the spacer between the toggle switch and the text. 
+        '''
         if not isinstance(text_spacer, int):
             raise TypeError(f'Expected int, got {type(text_spacer).__name__}')
         if text_spacer < 0:
@@ -79,14 +103,23 @@ class ToggleSwitch(Label):
 
     
     def get_text_spacer(self) -> int:
+        '''
+        Returns the size of the spacer between the toggle switch and the text. 
+        '''
         return self.text_spacer
 
     
     def output(self) -> list:
+        '''
+        Returns the toggle switch as string inside of a list.
+        '''
         return [str(self).strip()]
 
 
     def __str__(self) -> str:
+        '''
+        Returns the toggle switch as string.
+        '''
         if self.state:
             toggleswitch = (self.background_color if not self.selected else self.selected_color) + self.spacer * ' ' + self.track_color + '━' + self.on_color + '█' + self.text_spacer * ' ' + self.text_color + self.text + self.spacer * ' ' + TextColor.RESET
         else:

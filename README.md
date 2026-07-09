@@ -88,13 +88,13 @@ Returns the button as string.
 #### .disconnect() -> None
 Resets the function that gets called when using `.press()`.
 
-This function by default does nothing.
+The function by default does nothing.
 
 
 #### .on_press(function) -> None
 Sets the function that gets called when using `.press()` to `function`.
 
-This function by default does nothing.
+The function by default does nothing.
 
 
 #### .output() -> list
@@ -106,7 +106,7 @@ Returns the button as string inside of a list.
 #### .press() -> None
 Calls the function set with `.on_press()`.
 
-This function by default does nothing.
+The function by default does nothing.
 
 
 ### Header
@@ -217,6 +217,72 @@ If the text contains newlines (`\n`) the label will be a multiline label.
 
 
 ### ToggleSwitch
+
+To create a new ToggleSwitch use these lines of code:
+```python
+from widgets import ToggleSwitch
+
+toggle_switch = ToggleSwitch()
+```
+
+Optionally, you can give the ToggleSwitch a text and a length when creating:
+```python
+toggle_switch = ToggleSwitch('Text', 100)
+```
+
+The default text is `''` and the default length is `80`.
+
+
+`ToggleSwitch` inherits *all* functions from `Label`, except `.output()` and `.__str__()` and has 8 unqiue functions.
+
+
+#### .\_\_str\_\_() -> str
+Returns the toggle switch as string.
+
+
+#### .disconnect() -> None
+Resets the function that gets called when using `.toggle()` to `function`.
+
+The function by default does nothing.
+
+
+#### .get_text_spacer() -> int
+Returns the size of the spacer between the toggle switch and the text. 
+
+
+#### .on_toggle(function) -> None
+Sets the function that gets called when using `.toggle()` to `function`.
+
+The function by default does nothing.
+
+
+#### .output() -> list
+Returns the toggle switch as string inside of a list.
+
+**ToggleSwitches are not allowed to be multiline ToggleSwitches!**
+
+
+#### .set_off_color(off_color: TextColor) -> None
+Sets the color of the toggle switch to `off_color` when the current state equals off.
+
+
+#### .set_on_color(on_color: TextColor) -> None
+Sets the color of the toggle switch to `on_color` when the current state equals on.
+
+
+#### .set_text_spacer(text_spacer: int) -> None
+Sets the size of the spacer between the toggle switch and the text. 
+
+
+#### .set_track_color(track_color: TextColor) -> None
+Sets the color of the toggle switch track to `track_color`.
+
+
+#### .toggle() -> bool
+If the current state of the toggle switch is on, set the state to off and return `False` (the new state).
+If the current state of the toggle switch is off, set the state to on and return `True` (the new state).
+
+Calls the function set with `.on_toggle()`.
 
 
 ## Styles
