@@ -1,5 +1,17 @@
 # PyUI Documentation
 
+- [PyUI](#pyui)
+- [Widgets](#widgets)
+    - [Button](#button)
+    - [Header](#header)
+    - [Label](#label)
+    - [ToggleSwitch](#toggleswitch)
+- [Styles](#styles)
+    - [BackgroundColor](#backgroundcolor)
+    - [TextColor](#textcolor)
+    - [TextStyle](#textstyle)
+
+
 ## PyUI
 
 To create a new PyUI use these lines of code:
