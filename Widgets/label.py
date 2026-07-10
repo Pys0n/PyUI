@@ -137,6 +137,19 @@ class Label:
         '''
         string = ''
         for text in self.text.split('\n'):
+            length = self.length - (self.spacer * 2)
+            if len(text) > length:
+                current_pos = 0
+                parts = []
+                while len(text) >= current_pos:
+                    parts.append(text[current_pos:current_pos+length])
+                    current_pos += length
+                
+                for part in parts:
+                    string += (self.background_color if not self.selected else self.selected_color) + self.spacer * ' ' + self.text_color + part + self.spacer * ' ' + ' ' * (self.length - (len(part) + self.spacer * 2)) + TextColor.RESET + '\n'
+                
+                continue
+
             string += (self.background_color if not self.selected else self.selected_color) + self.spacer * ' ' + self.text_color + text + self.spacer * ' ' + ' ' * (self.length - (len(text) + self.spacer * 2)) + TextColor.RESET + '\n'
 
         return string
