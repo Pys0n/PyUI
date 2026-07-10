@@ -5,6 +5,7 @@
     - [Button](#button)
     - [Header](#header)
     - [Label](#label)
+    - [TextInput][#textinput]
     - [ToggleSwitch](#toggleswitch)
 - [Styles](#styles)
     - [BackgroundColor](#backgroundcolor)
@@ -225,6 +226,52 @@ Sets the color of the labels text.
 Sets the labels text to the value of `text`.
 
 If the text contains newlines (`\n`) the label will be a multiline label.
+
+
+
+### TextInput
+
+To create a new TextInput use these lines of code:
+```python
+from widgets import TextInput
+
+text_input = TextInput()
+```
+
+Optionally, you can give the TextInput a text and a length when creating:
+```python
+text_input = TextInput('Text', 100)
+```
+
+The default text is `''` and the default length is `80`.
+
+
+`TextInput` inherits *all* functions from `Label`, except `.__str__()` and has two unqiue functions: `.add_text()`, `.clear_text()` and `.input()`.
+
+
+#### .\_\_str\_\_() -> str
+Returns the text input as a (multiline) string.
+
+
+#### .add_text(text: str) -> str
+Adds `text` to the text inputs current text.
+
+Returns the new text.
+
+
+#### .clear_text() -> None
+Sets the text inputs text to `''`.
+
+
+#### .input(*args, **kwargs) -> str
+Calls the `input()` function with the given `*args` and `**kwargs`.
+Sets the text inputs text to the entered text.
+
+Returns the new text.
+
+
+#### .remove_last() -> str
+Removes the last element of the current text inputs text and returns it.
 
 
 
