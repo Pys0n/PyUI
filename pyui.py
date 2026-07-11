@@ -36,14 +36,32 @@ class PyUI:
         self.widgets = []
 
     
-    def add_widget(self, widget: ToggleSwitch | Label | Header | Button) -> None:
+    def add_widget(self, widget: ToggleSwitch | Label | Header | Button | TextInput) -> None:
         '''
         Adds `widget` to the end of the UI.
         '''
-        if not isinstance(widget, ToggleSwitch) and not isinstance(widget, Label) and not isinstance(widget, Header) and not isinstance(widget, Button):
+        if not isinstance(widget, ToggleSwitch) and not isinstance(widget, Label) and not isinstance(widget, Header) and not isinstance(widget, Button) and not isinstance(widget, TextInput):
             raise TypeError(f'Expected ToggleSwitch, Label, Header or Button, got {type(widget).__name__}')
 
         self.widgets.append(widget)
+
+        if self.widgets[self.selected] == widget:
+            if widget.selectable:
+                widget.selected = True
+            else:
+                self.selected += 1
+
+
+    def insert_widget(self, index: int, widget: ToggleSwitch | Label | Header | Button | TextInput) -> None:
+        '''
+        Inserts `widget` at `index` to the UI's widgets.
+        '''
+        if not isinstance(widget, ToggleSwitch) and not isinstance(widget, Label) and not isinstance(widget, Header) and not isinstance(widget, Button) and not isinstance(widget, TextInput):
+            raise TypeError(f'Expected ToggleSwitch, Label, Header or Button, got {type(widget).__name__}')
+        if not isinstance(index, int):
+            raise TypeError(f'Expected int, got {type(index).__name__}')
+
+        self.widgets.insert(index, widget)
 
         if self.widgets[self.selected] == widget:
             if widget.selectable:
@@ -59,7 +77,7 @@ class PyUI:
         return self.widgets
 
     
-    def select_next(self) -> ToggleSwitch | Label | Header | Button:
+    def select_next(self) -> ToggleSwitch | Label | Header | Button | TextInput:
         '''
         Selects the next selectable widget in the UI and returns it.
 
@@ -92,7 +110,7 @@ class PyUI:
         return (self.width, self.height)
 
 
-    def select_previous(self) -> ToggleSwitch | Label | Header | Button:
+    def select_previous(self) -> ToggleSwitch | Label | Header | Button | TextInput:
         '''
         Selects the previous selectable widget in the UI and returns it.
 

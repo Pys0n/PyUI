@@ -28,7 +28,7 @@ Returns the UI as multiline string.
 This function allows you to use `str(pyui)` and `print(pyui)`.
 
 
-### .add_widget(widget: ToggleSwitch | Label | Header | Button) -> None
+### .add_widget(widget: ToggleSwitch | Label | Header | Button | TextInput) -> None
 Adds `widget` to the end of the UI.
 
 
@@ -44,6 +44,10 @@ Returns the current size of the UI as tuple (`(width, height)`).
 Returns a list of all widgets in the order they are displayed.
 
 
+### .insert_widget(index: int, widget: ToggleSwitch | Label | Header | Button | TextInput) -> None
+Inserts `widget` at `index` to the UI's widgets.
+
+
 ### .interact_with_selected() -> bool | None
 Interacts with `ToggleSwitch` and `Button` by calling `ToggleSwitch.toggle()` and `Button.press()` and returns what those function returns.
 
@@ -52,13 +56,13 @@ Interacts with `ToggleSwitch` and `Button` by calling `ToggleSwitch.toggle()` an
 Prints the UI to the terminal.
 
 
-### .select_next() -> ToggleSwitch | Label | Header | Button
+### .select_next() -> ToggleSwitch | Label | Header | Button | TextInput
 Selects the next selectable widget in the UI and returns it.
 
 To check if a widget is selectable or to change that, use `widget.selectable`.
 
 
-### .select_previous() -> ToggleSwitch | Label | Header | Button
+### .select_previous() -> ToggleSwitch | Label | Header | Button | TextInput
 Selects the previous selectable widget in the UI and returns it.
 
 To check if a widget is selectable or to change that, use `widget.selectable`.
