@@ -5,7 +5,7 @@
     - [Button](#button)
     - [Header](#header)
     - [Label](#label)
-    - [TextInput][#textinput]
+    - [TextInput](#textinput)
     - [ToggleSwitch](#toggleswitch)
 - [Styles](#styles)
     - [BackgroundColor](#backgroundcolor)
