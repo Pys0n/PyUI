@@ -68,10 +68,10 @@ class TextInput(Label):
                     current_pos += length
                 
                 for part in parts:
-                    string += (self.background_color if not self.selected else self.selected_color) + self.spacer * ' ' + self.text_color + '| ' + part + self.spacer * ' ' + ' ' * (self.length - (len(part) + self.spacer * 2 + 4)) + ' |' + TextColor.RESET + '\n'
+                    string += (self.background_color if not self.selected else self.selected_color) + self.spacer * ' ' + self.text_color + '│ ' + part + self.spacer * ' ' + ' ' * (self.length - (len(part) + self.spacer * 2 + 4)) + ' │' + TextColor.RESET + '\n'
                 
                 continue
 
-            string += (self.background_color if not self.selected else self.selected_color) + self.spacer * ' ' + self.text_color + '| ' + text + self.spacer * ' ' + ' ' * (self.length - (len(text) + self.spacer * 2 + 4)) + ' |' + TextColor.RESET + '\n'
+            string += (self.background_color if not self.selected else self.selected_color) + self.spacer * ' ' + self.text_color + '│ ' + text + self.spacer * ' ' + ' ' * (self.length - (len(text) + self.spacer * 2 + 4)) + ' │' + TextColor.RESET + '\n'
 
         return string
