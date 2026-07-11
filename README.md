@@ -192,6 +192,18 @@ This can be set by using `.set_spacer()`.
 Returns the current text of the label.
 
 
+#### .hide() -> None
+Sets the `hidden` attribute to `True`.
+
+If a widget is hidden it won't be displayed when using `.print()` on your PyUI.
+
+
+#### .is_hidden() -> bool
+Returns the current value of the `hidden` attribute.
+
+The `hidden` attribute can be changed by calling `.show()` or `.hide()`.
+
+
 #### .output() -> list
 Returns the label splited at newlines as list.
 
@@ -226,6 +238,12 @@ Sets the color of the labels text.
 Sets the labels text to the value of `text`.
 
 If the text contains newlines (`\n`) the label will be a multiline label.
+
+
+#### .show() -> None
+Sets the `hidden` attribute to `False`.
+
+If a widget is hidden it won't be displayed when using `.print()` on your PyUI.
 
 
 

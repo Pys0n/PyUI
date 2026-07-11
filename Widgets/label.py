@@ -13,6 +13,7 @@ class Label:
 
         self.selected = False
         self.selectable = False
+        self.hidden = False
 
         self.text = text
         self.spacer = 2
@@ -122,6 +123,31 @@ class Label:
         This can be set by using `.set_spacer()`.
         '''
         return self.spacer
+
+
+    def show(self) -> None:
+        '''
+        Sets the `hidden` attribute to `False`.
+
+        If a widget is hidden it won't be displayed when using `.print()` on your PyUI.
+        '''
+        self.hidden = False
+
+
+    def hide(self) -> None:
+        '''
+        Sets the `hidden` attribute to `True`.
+
+        If a widget is hidden it won't be displayed when using `.print()` on your PyUI.
+        '''
+        self.hidden = True
+
+
+    def is_hidden(self) -> bool:
+        '''
+        Returns the current value of the `hidden` attribute.
+        '''
+        return self.hidden
 
     
     def output(self) -> list:

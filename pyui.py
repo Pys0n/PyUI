@@ -134,7 +134,8 @@ class PyUI:
         size = os.get_terminal_size()
         self.height, self.width = size.lines, size.columns
 
-        for line_index in range(max(self.height-1, len(self.widgets) * (self.widget_spacer+1))):
+        line_index = 0
+        while len(self.widgets) * (self.widget_spacer + 1) > line_index or len(screen) < self.height:
             index = (1 / (self.widget_spacer + 1)) * (line_index+1)
             if len(self.widgets) <= int(index)-1 or index != int(index):
                 line = ''
@@ -142,10 +143,19 @@ class PyUI:
                     line += self.background_color + ' ' + BackgroundColor.RESET
                 screen.append(line)
             else:
+                if self.widgets[int(index)-1].is_hidden():
+                    for _ in range(self.widget_spacer):
+                        if len(screen) > 0: screen.pop(-1)
+                    
+                    line_index += 1
+                    continue
+
                 widget_strs = self.widgets[int(index)-1].output()
                 for widget_str in widget_strs:
                     screen.append(self.background_color + self.spacer * ' ' + widget_str + self.background_color + ' ' * (self.width - (self.widgets[int(index)-1].length + 2 * self.spacer)) + self.spacer * ' ' + BackgroundColor.RESET)
         
+            line_index += 1
+
         screen_min = max(min(self.scroll_status*(self.widget_spacer+1), len(screen)-self.height), 0)
         screen_max = max(min(self.height+self.scroll_status*(self.widget_spacer+1), len(screen)), self.height)
-        return ''.join(screen[screen_min:screen_max])
+        return ''.join(screen[screen_min:screen_max-1])
