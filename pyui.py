@@ -177,3 +177,10 @@ class PyUI:
         screen_min = max(min(self.scroll_status*(self.widget_spacer+1), len(screen)-self.height), 0)
         screen_max = max(min(self.height+self.scroll_status*(self.widget_spacer+1), len(screen)), self.height)
         return ''.join(screen[screen_min:screen_max-1])
+
+
+    def __len__(self) -> int:
+        '''
+        Returns the number of widgets in the UI.
+        '''
+        return len(self.widgets)

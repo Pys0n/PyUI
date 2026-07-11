@@ -22,7 +22,14 @@ from pyui import PyUI
 pyui = PyUI()
 ```
 
-### .\_\__str\_\_() -> str
+
+### .\_\_len\_\_() -> int
+Returns the number of widgets in the UI.
+
+This function allows you to use `len(pyui)` to get the count of widgets in it.
+
+
+### .\_\_str\_\_() -> str
 Returns the UI as multiline string.
 
 This function allows you to use `str(pyui)` and `print(pyui)`.
