@@ -3,6 +3,7 @@
 - [PyUI](#pyui)
 - [Widgets](#widgets)
     - [Button](#button)
+    - [Expandable](#expandable)
     - [Header](#header)
     - [Label](#label)
     - [TextInput](#textinput)
@@ -35,7 +36,7 @@ Returns the UI as multiline string.
 This function allows you to use `str(pyui)` and `print(pyui)`.
 
 
-### .add_widget(widget: ToggleSwitch | Label | Header | Button | TextInput) -> None
+### .add_widget(widget: ToggleSwitch | Label | Header | Button | TextInput | Expandable) -> None
 Adds `widget` to the end of the UI.
 
 
@@ -51,7 +52,7 @@ Returns the current size of the UI as tuple (`(width, height)`).
 Returns a list of all widgets in the order they are displayed.
 
 
-### .insert_widget(index: int, widget: ToggleSwitch | Label | Header | Button | TextInput) -> None
+### .insert_widget(index: int, widget: ToggleSwitch | Label | Header | Button | TextInput | Expandable) -> None
 Inserts `widget` at `index` to the UI's widgets.
 
 
@@ -63,13 +64,17 @@ Interacts with `ToggleSwitch` and `Button` by calling `ToggleSwitch.toggle()` an
 Prints the UI to the terminal.
 
 
-### .select_next() -> ToggleSwitch | Label | Header | Button | TextInput
+### .remove_widget(widget: ToggleSwitch | Label | Header | Button | TextInput | Expandable) -> None
+Removes `widget` from the UI's widgets.
+
+
+### .select_next() -> ToggleSwitch | Label | Header | Button | TextInput | Expandable
 Selects the next selectable widget in the UI and returns it.
 
 To check if a widget is selectable or to change that, use `widget.selectable`.
 
 
-### .select_previous() -> ToggleSwitch | Label | Header | Button | TextInput
+### .select_previous() -> ToggleSwitch | Label | Header | Button | TextInput | Expandable
 Selects the previous selectable widget in the UI and returns it.
 
 To check if a widget is selectable or to change that, use `widget.selectable`.
@@ -131,6 +136,90 @@ Returns the button as string inside of a list.
 Calls the function set with `.on_press()`.
 
 The function by default does nothing.
+
+
+### Expandable
+
+To create a new Expandable use these lines of code:
+```python
+from widgets import Expandable
+
+expandable = Expandable(pyui)
+```
+
+***Attention:*** `Expandable` takes a `PyUI` or another `Expandable` as first argument!
+
+Optionally, you can give the Expandable a text and a length when creating:
+```python
+expandable = Expandable(pyui, 'Text', 100)
+```
+
+The default text is `''` and the default length is `80`.
+
+
+`Expandable` inherits *all* functions from `Label`, except `.output()` and `.__str__()` and has 11 unique functions.
+
+
+#### .__len__() -> int
+Returns the number of widgets inside the expandable.
+
+
+#### .\_\_str\_\_() -> str
+Returns the expandable as a string.
+
+
+#### .add_widget(widget: ToggleSwitch | Label | Header | Button | TextInput | Expandable) -> None
+Adds `widget` to the end of the expandable.
+
+
+#### .clear_widgets() -> None
+Removes all widgets from the expandable.
+
+
+#### .collapse() -> None
+Collapses the widget (all sub-widgets are going to be hidden).
+
+This function does nothing, if the widget is already collapsed.
+
+#### .expand() -> None
+Expands the widget (all sub-widgets are going to be visible).
+
+This function does nothing, if the widget is already expanded.
+
+
+#### .get_text_spacer() -> int
+Returns the number of spaces between the current states indicator (`>` or `v`) and the text.
+
+
+#### .get_widgets() -> list
+Returns a list of all widgets in the order they are displayed.
+
+
+#### .insert_widget(index: int, widget: ToggleSwitch | Label | Header | Button | TextInput | Expandable) -> None:
+Inserts `widget` at `index` to the expandable's widgets.
+
+
+#### .is_expanded() -> bool
+Returns `True` if the widget is expanded and `False` if the widget is collapsed.
+
+
+#### .output() -> list
+Returns the expandable as string inside of a list.
+
+
+### .remove_widget(widget: ToggleSwitch | Label | Header | Button | TextInput | Expandable) -> None
+Removes `widget` from the expandable's widgets.
+
+
+#### .set_text_spacer(text_spacer: int) -> None
+Sets the number of spaces between the current states indicator (`>` or `v`) and the text.
+
+
+#### .toggle() -> bool
+Expands the widget if it is collapsed and collapses the widget if it is expanded.
+
+Returns `True` if the widget got expanded and `False` if the widget got collpased.
+
 
 
 ### Header
