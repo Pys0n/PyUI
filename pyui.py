@@ -115,7 +115,7 @@ class PyUI:
         '''
         previous = self.widgets[self.selected]
         for increasment, item in enumerate(self.widgets[self.selected+1:]):
-            if item.selectable:
+            if item.selectable and not item.hidden:
                 self.selected += increasment + 1
                 self.scroll_status += increasment + 1
                 item.selected = True
@@ -148,7 +148,7 @@ class PyUI:
         '''
         previous = self.widgets[self.selected]
         for decreasment, item in enumerate(self.widgets[:self.selected][::-1]):
-            if item.selectable:
+            if item.selectable and not item.hidden:
                 self.selected -= decreasment + 1
                 self.scroll_status -= decreasment + 1
                 item.selected = True

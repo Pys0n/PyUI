@@ -17,6 +17,7 @@ class TextInput(Label):
         super().__init__(text, length)
 
         self.on_change_do = nothing
+        self.selectable = True
 
     
     def add_text(self, text: str) -> str:
