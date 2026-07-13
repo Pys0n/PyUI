@@ -3,6 +3,10 @@ from styles import *
 from Widgets.label import Label
 
 
+def nothing(text):
+    pass
+
+
 class TextInput(Label):
     def __init__(self, text: str = '', length: int = 80) -> None:
         if not isinstance(text, str):
@@ -12,14 +16,20 @@ class TextInput(Label):
 
         super().__init__(text, length)
 
+        self.on_change_do = nothing
+
     
     def add_text(self, text: str) -> str:
         '''
         Adds `text` to the text inputs current text.
 
+        Calls the function set with `.on_change()`.
+
         Returns the new text.
         '''
         self.text += text
+
+        self.on_change_do(self.text)
 
         return self.text
 
@@ -27,16 +37,24 @@ class TextInput(Label):
     def clear_text(self) -> None:
         '''
         Sets the text inputs text to `''`.
+
+        Calls the function set with `.on_change()`.
         '''
         self.text = ''
+
+        self.on_change_do(self.text)
 
 
     def remove_last(self) -> str:
         '''
         Removes the last element of the current text inputs text and returns it.
+
+        Calls the function set with `.on_change()`.
         '''
         last = self.text[-1]
         self.text = self.text[:-1]
+
+        self.on_change_do(self.text)
 
         return last
 
@@ -46,11 +64,32 @@ class TextInput(Label):
         Calls the `input()` function with the given `*args` and `**kwargs`.
         Sets the text inputs text to the entered text.
 
+        Calls the function set with `.on_change()`.
+
         Returns the new text.
         '''
         self.text = input(*args, **kwargs)
 
+        self.on_change_do(self.text)
+
         return self.text
+
+    
+    def on_change(self, function) -> None:
+        '''
+        Sets the function that gets called when using `.add_text()`, `.clear_text()`, `.input()` or `.remove_last()` to `function`.
+        '''
+        if not callable(function):
+            raise TypeError(f'Expected function, got {type(function).__name__}')
+
+        self.on_change_do = function
+
+
+    def disconnect(self) -> None:
+        '''
+        Resets the function that gets called when using `.add_text()`, `.clear_text()`, `.input()` or `.remove_last()` to `function`.
+        '''
+        self.on_change_do = nothing
 
 
     def __str__(self) -> str:

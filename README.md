@@ -374,22 +374,38 @@ Returns the text input as a (multiline) string.
 #### .add_text(text: str) -> str
 Adds `text` to the text inputs current text.
 
+Calls the function set with `.on_change()`.
+
 Returns the new text.
 
 
 #### .clear_text() -> None
 Sets the text inputs text to `''`.
 
+Calls the function set with `.on_change()`.
+
+
+#### .disconnect() -> None
+Resets the function that gets called when using `.add_text()`, `.clear_text()`, `.input()` or `.remove_last()` to `function`.
+
 
 #### .input(*args, **kwargs) -> str
 Calls the `input()` function with the given `*args` and `**kwargs`.
 Sets the text inputs text to the entered text.
 
+Calls the function set with `.on_change()`.
+
 Returns the new text.
+
+
+#### .on_change(function) -> None
+Sets the function that gets called when using `.add_text()`, `.clear_text()`, `.input()` or `.remove_last()` to `function`.
 
 
 #### .remove_last() -> str
 Removes the last element of the current text inputs text and returns it.
+
+Calls the function set with `.on_change()`.
 
 
 
