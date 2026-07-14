@@ -390,6 +390,12 @@ Calls the function set with `.on_change()`.
 Resets the function that gets called when using `.add_text()`, `.clear_text()`, `.input()` or `.remove_last()` to `function`.
 
 
+#### .get_mode() -> int
+Returns the current mode of the TextInput.
+
+For more information see [TextInputMode](#textinputmode).
+
+
 #### .input(*args, **kwargs) -> str
 Calls the `input()` function with the given `*args` and `**kwargs`.
 Sets the text inputs text to the entered text.
@@ -408,6 +414,11 @@ Removes the last element of the current text inputs text and returns it.
 
 Calls the function set with `.on_change()`.
 
+
+#### .set_mode(mode: TextInputMode | int) -> None
+Sets the mode of the widget to `mode`.
+
+For more information see [TextInputMode](#textinputmode).
 
 
 ### ToggleSwitch

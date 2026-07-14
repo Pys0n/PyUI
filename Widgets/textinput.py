@@ -23,6 +23,9 @@ class TextInput(Label):
 
 
     def set_mode(self, mode: TextInputMode | int) -> None:
+        '''
+        Sets the mode of the widget to `mode`.
+        '''
         if not isinstance(mode, int):
             raise TypeError(f'Expected TextInputMode, got {type(mode).__name__}')
 
@@ -30,6 +33,9 @@ class TextInput(Label):
 
 
     def get_mode(self) -> int:
+        '''
+        Returns the current mode of the TextInput.
+        '''
         return self.mode
 
     
