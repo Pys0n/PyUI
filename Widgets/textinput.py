@@ -19,6 +19,19 @@ class TextInput(Label):
         self.on_change_do = nothing
         self.selectable = True
 
+        self.mode = TextInputMode.DEFAULT
+
+
+    def set_mode(self, mode: TextInputMode | int) -> None:
+        if not isinstance(mode, int):
+            raise TypeError(f'Expected TextInputMode, got {type(mode).__name__}')
+
+        self.mode = mode
+
+
+    def get_mode(self) -> int:
+        return self.mode
+
     
     def add_text(self, text: str) -> str:
         '''
@@ -99,6 +112,8 @@ class TextInput(Label):
         '''
         string = ''
         for text in self.text.split('\n'):
+            if self.mode == TextInputMode.PASSWORD: text = '*' * len(text)
+
             length = self.length - (self.spacer * 2 + 4)
             if len(text) > length:
                 current_pos = 0

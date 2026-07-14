@@ -24,3 +24,8 @@ class TextStyles:
     BOLDITALIC = '\033[1;3m'
     ALL = '\033[1;3;4m'
     RESET = '\033[0m'
+
+
+class TextInputMode:
+    DEFAULT = 0
+    PASSWORD = 1

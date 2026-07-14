@@ -11,6 +11,7 @@
 - [Styles](#styles)
     - [BackgroundColor](#backgroundcolor)
     - [TextColor](#textcolor)
+    - [TextInputMode](#textinputmode)
     - [TextStyle](#textstyle)
 
 
@@ -489,7 +490,7 @@ There are currently four text colors:
 - `BackgroundColor.GREEN`
 - `BackgroundColor.RED`
 
-With `BackgroundColor.RESET`, you can mark the end of an bold/italic/underlined paragraph.
+With `BackgroundColor.RESET`, you can mark the end of an colored paragraph.
 **Attention:** `BackgroundColor.RESET` also resets `TextColor` and `TextStyle`
 
 
@@ -501,8 +502,15 @@ There are currently four text colors:
 - `TextColor.GREEN`
 - `TextColor.RED`
 
-With `TextColor.RESET`, you can mark the end of an bold/italic/underlined paragraph.
+With `TextColor.RESET`, you can mark the end of an colored paragraph.
 **Attention:** `TextColor.RESET` also resets `BackgroundColor` and `TextStyle`
+
+
+### TextInputMode
+
+There are currently two modes:
+- `TextInputMode.DEFAULT` (standart) (*default*)
+- `TextInputMode.PASSWORD` (only `*`)
 
 
 ### TextStyle
