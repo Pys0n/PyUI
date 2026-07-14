@@ -114,13 +114,15 @@ class PyUI:
         To check if a widget is selectable or to change that, use `widget.selectable`.
         '''
         previous = self.widgets[self.selected]
-        for increasment, item in enumerate(self.widgets[self.selected+1:]):
+        increasment = 0
+        for i, item in enumerate(self.widgets[self.selected+1:]):
             if item.selectable and not item.hidden:
-                self.selected += increasment + 1
+                self.selected += i + 1
                 self.scroll_status += increasment + 1
                 item.selected = True
                 previous.selected = False
                 return item
+            increasment += len(item.output())
 
 
     def get_size(self) -> tuple:
@@ -147,13 +149,15 @@ class PyUI:
         To check if a widget is selectable or to change that, use `widget.selectable`.
         '''
         previous = self.widgets[self.selected]
-        for decreasment, item in enumerate(self.widgets[:self.selected][::-1]):
+        decreasment = 0
+        for i, item in enumerate(self.widgets[:self.selected][::-1]):
             if item.selectable and not item.hidden:
-                self.selected -= decreasment + 1
+                self.selected -= i + 1
                 self.scroll_status -= decreasment + 1
                 item.selected = True
                 previous.selected = False
                 return item
+            decreasment += len(item.output())
 
     
     def interact_with_selected(self) -> bool | None:
@@ -188,7 +192,7 @@ class PyUI:
         self.height, self.width = size.lines, size.columns
 
         line_index = 0
-        while len(self.widgets) * (self.widget_spacer + 1) > line_index or len(screen) < self.height:
+        while len(self.widgets) * (self.widget_spacer + 1) >= line_index - 1 or len(screen) < self.height:
             index = (1 / (self.widget_spacer + 1)) * (line_index+1)
             if len(self.widgets) <= int(index)-1 or index != int(index):
                 line = ''
@@ -209,8 +213,10 @@ class PyUI:
         
             line_index += 1
 
-        screen_min = max(min(self.scroll_status*(self.widget_spacer+1), len(screen)-self.height), 0)
-        screen_max = max(min(self.height+self.scroll_status*(self.widget_spacer+1), len(screen)), self.height)
+        status = self.scroll_status + (self.selected + 1) * self.widget_spacer
+
+        screen_min = max(min(status, len(screen) - self.height), 0)
+        screen_max = screen_min + self.height
         return ''.join(screen[screen_min:screen_max-1])
 
 
