@@ -6,6 +6,11 @@ from Widgets.label import Label
 from Widgets.textinput import TextInput
 from Widgets.toggle_switch import ToggleSwitch
 
+
+def nothing(expanded):
+    pass
+
+
 class Expandable(Label):
     def __init__(self, parent, text: str = '', length: int = 80) -> None:
         if not isinstance(length, int):
@@ -23,6 +28,8 @@ class Expandable(Label):
         self.selectable = True
 
         self.text_spacer = 2
+
+        self.on_toggle_do = nothing
 
 
     def set_text_spacer(self, text_spacer: int) -> None:
@@ -45,21 +52,29 @@ class Expandable(Label):
     def expand(self) -> None:
         '''
         Expands the widget (all sub-widgets are going to be visible).
+
+        Calls the function set with `.on_toggle()`.
         '''
         self.expanded = True
 
         for widget in self.widgets:
             widget.show()
 
+        self.on_toggle_do(True)
+
     
     def collapse(self) -> None:
         '''
         Collapses the widget (all sub-widgets are going to be hidden).
+
+        Calls the function set with `.on_toggle()`.
         '''
         self.expanded = False
 
         for widget in self.widgets:
             widget.hide()
+
+        self.on_toggle_do(False)
 
     
     def toggle(self) -> bool:
@@ -67,6 +82,8 @@ class Expandable(Label):
         Expands the widget if it is collapsed and collapses the widget if it is expanded.
 
         Returns `True` if the widget got expanded and `False` if the widget got collpased.
+
+        Calls the function set with `.on_toggle()`.
         '''
         if self.expanded:
             self.collapse()
@@ -74,6 +91,23 @@ class Expandable(Label):
             self.expand()
 
         return self.is_expanded()
+
+
+    def on_toggle(self, function) -> None:
+        '''
+        Sets the function that gets called when using `.expand()`, `.collapse()` or `.toggle()` to `function`.
+        '''
+        if not callable(function):
+            raise TypeError(f'Expected function, got {type(function).__name__}')
+
+        self.on_toggle_do = function
+
+
+    def disconnect(self) -> None:
+        '''
+        Resets the function that gets called when using `.expand()`, `.collapse()` or `.toggle()`.
+        '''
+        self.on_toggle_do = nothing
 
 
     def is_expanded(self) -> bool:

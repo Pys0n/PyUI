@@ -182,10 +182,19 @@ Collapses the widget (all sub-widgets are going to be hidden).
 
 This function does nothing, if the widget is already collapsed.
 
+Calls the function set with `.on_toggle()`.
+
+
+#### .disconnect() -> None
+Resets the function that gets called when using `.expand()`, `.collapse()` or `.toggle()`.
+
+
 #### .expand() -> None
 Expands the widget (all sub-widgets are going to be visible).
 
 This function does nothing, if the widget is already expanded.
+
+Calls the function set with `.on_toggle()`.
 
 
 #### .get_text_spacer() -> int
@@ -202,6 +211,10 @@ Inserts `widget` at `index` to the expandable's widgets.
 
 #### .is_expanded() -> bool
 Returns `True` if the widget is expanded and `False` if the widget is collapsed.
+
+
+#### .on_toggle(function) -> None
+Sets the function that gets called when using `.expand()`, `.collapse()` or `.toggle()` to `function`.
 
 
 #### .output() -> list
@@ -221,6 +234,7 @@ Expands the widget if it is collapsed and collapses the widget if it is expanded
 
 Returns `True` if the widget got expanded and `False` if the widget got collpased.
 
+Calls the function set with `.on_toggle()`.
 
 
 ### Header
@@ -387,7 +401,7 @@ Calls the function set with `.on_change()`.
 
 
 #### .disconnect() -> None
-Resets the function that gets called when using `.add_text()`, `.clear_text()`, `.input()` or `.remove_last()` to `function`.
+Resets the function that gets called when using `.add_text()`, `.clear_text()`, `.input()` or `.remove_last()`.
 
 
 #### .get_mode() -> int
@@ -446,7 +460,7 @@ Returns the toggle switch as string.
 
 
 #### .disconnect() -> None
-Resets the function that gets called when using `.toggle()` to `function`.
+Resets the function that gets called when using `.toggle()`.
 
 The function by default does nothing.
 
