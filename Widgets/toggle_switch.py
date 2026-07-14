@@ -142,13 +142,13 @@ class ToggleSwitch(Label):
                     if toggle_placed == True: toggle = '  '
                     else: toggle_placed = True
 
-                    string += (self.background_color if not self.selected else self.selected_color) + self.spacer * ' ' + toggle + self.text_spacer * ' ' + self.text_color + part + self.spacer * ' ' + ' ' * (self.length - (len(part) + self.spacer * 2 + self.text_spacer + 2)) + TextColor.RESET + '\n'
+                    string += (self.background_color if not self.selected else self.selected_color) + self.indentation * ' ' + self.spacer * ' ' + toggle + self.text_spacer * ' ' + self.text_color + part + self.spacer * ' ' + ' ' * (self.length - (len(part) + self.spacer * 2 + self.text_spacer + self.indentation + 2)) + TextColor.RESET + '\n'
                 
                 continue
 
             if toggle_placed == True: toggle = '  '
             else: toggle_placed = True
 
-            string += (self.background_color if not self.selected else self.selected_color) + self.spacer * ' ' + toggle + self.text_spacer * ' ' + self.text_color + text + self.spacer * ' ' + ' ' * (self.length - (len(text) + self.spacer * 2 + self.text_spacer + 2)) + TextColor.RESET + '\n'
+            string += (self.background_color if not self.selected else self.selected_color) + self.indentation * ' ' + self.spacer * ' ' + toggle + self.text_spacer * ' ' + self.text_color + text + self.spacer * ' ' + ' ' * (self.length - (len(text) + self.spacer * 2 + self.text_spacer + self.indentation + 2)) + TextColor.RESET + '\n'
 
         return string

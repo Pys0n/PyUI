@@ -17,6 +17,7 @@ class Label:
 
         self.text = text
         self.spacer = 2
+        self.indentation = 0
 
         self.length = length
 
@@ -172,10 +173,10 @@ class Label:
                     current_pos += length
                 
                 for part in parts:
-                    string += (self.background_color if not self.selected else self.selected_color) + self.spacer * ' ' + self.text_color + part + self.spacer * ' ' + ' ' * (self.length - (len(part) + self.spacer * 2)) + TextColor.RESET + '\n'
+                    string += (self.background_color if not self.selected else self.selected_color) + self.indentation * ' ' + self.spacer * ' ' + self.text_color + part + self.spacer * ' ' + ' ' * (self.length - (len(part) + self.spacer * 2 + self.indentation)) + TextColor.RESET + '\n'
                 
                 continue
 
-            string += (self.background_color if not self.selected else self.selected_color) + self.spacer * ' ' + self.text_color + text + self.spacer * ' ' + ' ' * (self.length - (len(text) + self.spacer * 2)) + TextColor.RESET + '\n'
+            string += (self.background_color if not self.selected else self.selected_color) + self.indentation * ' ' + self.spacer * ' ' + self.text_color + text + self.spacer * ' ' + ' ' * (self.length - (len(text) + self.spacer * 2 + self.indentation)) + TextColor.RESET + '\n'
 
         return string

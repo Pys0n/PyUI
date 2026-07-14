@@ -121,7 +121,8 @@ class Expandable(Label):
         '''
         Removes all widgets from the expandable.
         '''
-        self.widgets = []
+        for widget in self.widgets[:]:
+            self.remove_widget(widget)
 
     
     def add_widget(self, widget: ToggleSwitch | Label | Header | Button | TextInput) -> None:
@@ -133,7 +134,8 @@ class Expandable(Label):
         if self not in self.parent.widgets:
             raise ValueError(f'Expandable isn\'t a widget of an PyUI or another Expandable yet!')
 
-        widget.hide()
+        if not self.expanded: widget.hide()
+        widget.indentation = self.indentation + 2
 
         self.widgets.append(widget)
 
@@ -152,7 +154,8 @@ class Expandable(Label):
         if self not in self.parent.widgets:
             raise ValueError(f'Expandable isn\'t a widget of an PyUI or another Expandable yet!')
 
-        widget.hide()
+        if not self.expanded: widget.hide()
+        widget.indentation = self.indentation + 2
 
         self.widgets.insert(index, widget)
 
@@ -166,6 +169,8 @@ class Expandable(Label):
         '''
         
         self.parent.remove_widget(widget)
+        widget.indentation -= 2
+        widget.show()
 
 
     def get_widgets(self) -> list:
@@ -187,11 +192,11 @@ class Expandable(Label):
         Returns the expandable as a string.
         '''
         if self.expanded:
-            expandable = (self.background_color if not self.selected else self.selected_color) + self.spacer * ' ' + self.text_color + 'v' + self.text_spacer * ' ' + self.text + self.spacer * ' ' + TextColor.RESET
+            expandable = (self.background_color if not self.selected else self.selected_color) + self.indentation * ' ' + self.spacer * ' ' + self.text_color + 'v' + self.text_spacer * ' ' + self.text + self.spacer * ' ' + TextColor.RESET
         else:
-            expandable = (self.background_color if not self.selected else self.selected_color) + self.spacer * ' ' + self.text_color + '>' + self.text_spacer * ' ' + self.text + self.spacer * ' ' + TextColor.RESET
+            expandable = (self.background_color if not self.selected else self.selected_color) + self.indentation * ' ' + self.spacer * ' ' + self.text_color + '>' + self.text_spacer * ' ' + self.text + self.spacer * ' ' + TextColor.RESET
         
-        expandable += (self.background_color if not self.selected else self.selected_color) + ' ' * (self.length - (len(self.text) + self.spacer * 2 + self.text_spacer + 1)) + BackgroundColor.RESET
+        expandable += (self.background_color if not self.selected else self.selected_color) + ' ' * (self.length - (len(self.text) + self.spacer * 2 + self.text_spacer + self.indentation + 1)) + BackgroundColor.RESET
 
         return expandable
 

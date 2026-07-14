@@ -55,6 +55,6 @@ class Button(Label):
         '''
         Returns the button as string.
         '''
-        label = (self.background_color if not self.selected else self.selected_color) + self.spacer * ' ' + self.text_color + '[ ' + self.text + ' ]' + self.spacer * ' ' + ' ' * (self.length - (len(self.text) + self.spacer * 2 + 4)) + TextColor.RESET
+        label = (self.background_color if not self.selected else self.selected_color) + self.indentation * ' ' + self.spacer * ' ' + self.text_color + '[ ' + self.text + ' ]' + self.spacer * ' ' + ' ' * (self.length - (len(self.text) + self.spacer * 2 + self.indentation + 4)) + TextColor.RESET
 
         return label
