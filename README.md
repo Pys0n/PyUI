@@ -161,7 +161,7 @@ The default text is `''` and the default length is `80`.
 `Expandable` inherits *all* functions from `Label`, except `.output()` and `.__str__()` and has 11 unique functions.
 
 
-#### .__len__() -> int
+#### .\_\_len\_\_() -> int
 Returns the number of widgets inside the expandable.
 
 
