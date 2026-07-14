@@ -13,13 +13,13 @@ class Header(Label):
     
     def output(self) -> list:
         '''
-        Returns the header as string inside of a list.
+        Returns the header switch splited at newlines as list.
         '''
-        return [str(self).strip()]
+        return [(TextStyles.BOLDITALIC if i != len(str(self).strip().split('\n'))-1 else TextStyles.ALL) + x for i, x in enumerate(str(self).strip().split('\n'))]
 
 
     def __str__(self) -> str:
         '''
-        Returns the header as string.
+        Returns the header as a (multiline) string.
         '''
-        return TextStyles.ALL + super().__str__()
+        return super().__str__()

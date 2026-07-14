@@ -258,13 +258,11 @@ The default text is `''` and the default length is `80`.
 
 
 #### .\_\_str\_\_() -> str
-Returns the header as string.
+Returns the header as a (multiline) string.
 
 
 #### .output() -> list
-Returns the header as string inside of a list.
-
-**Headers are not allowed to be multiline Headers!**
+Returns the header switch splited at newlines as list.
 
 
 ### Label
@@ -456,7 +454,7 @@ The default text is `''` and the default length is `80`.
 
 
 #### .\_\_str\_\_() -> str
-Returns the toggle switch as string.
+Returns the toggle switch as a (multiline) string.
 
 
 #### .disconnect() -> None
@@ -476,9 +474,7 @@ The function by default does nothing.
 
 
 #### .output() -> list
-Returns the toggle switch as string inside of a list.
-
-**ToggleSwitches are not allowed to be multiline ToggleSwitches!**
+Returns the toggle switch splited at newlines as list.
 
 
 #### .set_off_color(off_color: TextColor) -> None

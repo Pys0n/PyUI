@@ -111,20 +111,44 @@ class ToggleSwitch(Label):
     
     def output(self) -> list:
         '''
-        Returns the toggle switch as string inside of a list.
+        Returns the toggle switch splited at newlines as list.
         '''
-        return [str(self).strip()]
+        return str(self).strip().split('\n')
 
 
     def __str__(self) -> str:
         '''
-        Returns the toggle switch as string.
+        Returns the toggle switch as a (multiline) string.
         '''
-        if self.state:
-            toggleswitch = (self.background_color if not self.selected else self.selected_color) + self.spacer * ' ' + self.track_color + '━' + self.on_color + '█' + self.text_spacer * ' ' + self.text_color + self.text + self.spacer * ' ' + TextColor.RESET
-        else:
-            toggleswitch = (self.background_color if not self.selected else self.selected_color) + self.spacer * ' ' + self.off_color + '█' + self.track_color + '━' + self.text_spacer * ' ' + self.text_color + self.text + self.spacer * ' ' + TextColor.RESET
-        
-        toggleswitch += (self.background_color if not self.selected else self.selected_color) + ' ' * (self.length - (len(self.text) + self.spacer * 2 + self.text_spacer + 2)) + BackgroundColor.RESET
+        toggle_placed = False
 
-        return toggleswitch
+        if self.state:
+            toggle = self.track_color + '━' + self.on_color + '█'
+        else:
+            toggle = self.off_color + '█' + self.track_color + '━'
+
+
+        string = ''
+        for text in self.text.split('\n'):
+            length = self.length - (self.spacer * 2 + self.text_spacer + 2)
+            if len(text) > length:
+                current_pos = 0
+                parts = []
+                while len(text) >= current_pos:
+                    parts.append(text[current_pos:current_pos+length])
+                    current_pos += length
+                
+                for part in parts:
+                    if toggle_placed == True: toggle = '  '
+                    else: toggle_placed = True
+
+                    string += (self.background_color if not self.selected else self.selected_color) + self.spacer * ' ' + toggle + self.text_spacer * ' ' + self.text_color + part + self.spacer * ' ' + ' ' * (self.length - (len(part) + self.spacer * 2 + self.text_spacer + 2)) + TextColor.RESET + '\n'
+                
+                continue
+
+            if toggle_placed == True: toggle = '  '
+            else: toggle_placed = True
+
+            string += (self.background_color if not self.selected else self.selected_color) + self.spacer * ' ' + toggle + self.text_spacer * ' ' + self.text_color + text + self.spacer * ' ' + ' ' * (self.length - (len(text) + self.spacer * 2 + self.text_spacer + 2)) + TextColor.RESET + '\n'
+
+        return string
