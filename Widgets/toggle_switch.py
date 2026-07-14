@@ -85,7 +85,7 @@ class ToggleSwitch(Label):
     
     def disconnect(self) -> None:
         '''
-        Resets the function that gets called when using `.toggle()` to `function`.
+        Resets the function that gets called when using `.toggle()`.
         '''
         self.on_toggle_do = nothing
 

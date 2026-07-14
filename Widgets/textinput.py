@@ -107,7 +107,7 @@ class TextInput(Label):
 
     def disconnect(self) -> None:
         '''
-        Resets the function that gets called when using `.add_text()`, `.clear_text()`, `.input()` or `.remove_last()` to `function`.
+        Resets the function that gets called when using `.add_text()`, `.clear_text()`, `.input()` or `.remove_last()`.
         '''
         self.on_change_do = nothing
 
