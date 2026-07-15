@@ -1,7 +1,7 @@
 import os
 
-from styles import *
-from widgets import *
+from .styles import *
+from .widgets import *
 
 class PyUI:
     def __init__(self) -> None:

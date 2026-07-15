@@ -1,5 +1,5 @@
-from styles import *
-from Widgets.label import Label
+from ..styles import *
+from .label import Label
 
 class Header(Label):
     def __init__(self, text: str = '', length: int = 80) -> None:

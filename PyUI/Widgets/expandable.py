@@ -1,10 +1,10 @@
-from styles import *
+from ..styles import *
 
-from Widgets.button import Button
-from Widgets.header import Header
-from Widgets.label import Label
-from Widgets.textinput import TextInput
-from Widgets.toggle_switch import ToggleSwitch
+from .button import Button
+from .header import Header
+from .label import Label
+from .textinput import TextInput
+from .toggle_switch import ToggleSwitch
 
 
 def nothing(expanded):

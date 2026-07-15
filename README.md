@@ -1,3 +1,11 @@
+# Installation
+
+To install PyUI, run this command:
+
+```bash
+pip install git+https://github.com/Pys0n/PyUI.git
+```
+
 # PyUI Documentation
 
 - [PyUI](#pyui)
@@ -19,7 +27,7 @@
 
 To create a new PyUI use these lines of code:
 ```python
-from pyui import PyUI
+from PyUI import PyUI
 
 pyui = PyUI()
 ```
@@ -95,7 +103,7 @@ Updates the UI's size to the terminal size and returns the new size as tuple (`(
 
 To create a new Button use these lines of code:
 ```python
-from widgets import Button
+from PyUI import Button
 
 button = Button()
 ```
@@ -143,7 +151,7 @@ The function by default does nothing.
 
 To create a new Expandable use these lines of code:
 ```python
-from widgets import Expandable
+from PyUI import Expandable
 
 expandable = Expandable(pyui)
 ```
@@ -241,7 +249,7 @@ Calls the function set with `.on_toggle()`.
 
 To create a new Header use these lines of code:
 ```python
-from widgets import Header
+from PyUI import Header
 
 header = Header()
 ```
@@ -269,7 +277,7 @@ Returns the header switch splited at newlines as list.
 
 To create a new Label use these lines of code:
 ```python
-from widgets import Label
+from PyUI import Label
 
 label = Label()
 ```
@@ -364,7 +372,7 @@ If a widget is hidden it won't be displayed when using `.print()` on your PyUI.
 
 To create a new TextInput use these lines of code:
 ```python
-from widgets import TextInput
+from PyUI import TextInput
 
 text_input = TextInput()
 ```
@@ -437,7 +445,7 @@ For more information see [TextInputMode](#textinputmode).
 
 To create a new ToggleSwitch use these lines of code:
 ```python
-from widgets import ToggleSwitch
+from PyUI import ToggleSwitch
 
 toggle_switch = ToggleSwitch()
 ```
@@ -502,6 +510,10 @@ Calls the function set with `.on_toggle()`.
 
 ## Styles
 
+To use those styles you need to import them:
+```python
+from PyUI import BackgroundColor, TextColor, TextInputMode, TextStyles
+```
 
 ### BackgroundColor
 

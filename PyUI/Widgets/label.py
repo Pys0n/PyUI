@@ -1,4 +1,4 @@
-from styles import *
+from ..styles import *
 
 class Label:
     def __init__(self, text: str = '', length: int = 80) -> None:

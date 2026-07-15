@@ -1,5 +1,5 @@
-from styles import *
-from Widgets.label import Label
+from ..styles import *
+from .label import Label
 
 
 def nothing():
