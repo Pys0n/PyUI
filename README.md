@@ -1,10 +1,31 @@
 # Installation
 
-To install PyUI, run this command:
+## Linux & MacOS
+
+Run one of the commands in your terminal:
 
 ```bash
 pip install git+https://github.com/Pys0n/PyUI.git
 ```
+
+```bash
+python3 -m pip install git+https://github.com/Pys0n/PyUI.git
+```
+
+
+## Windows
+
+Run one of the commands in the terminal, powershell or cmd:
+
+```bash
+pip install git+https://github.com/Pys0n/PyUI.git
+```
+
+```bash
+python -m pip install git+https://github.com/Pys0n/PyUI.git
+```
+
+
 
 # PyUI Documentation
 
