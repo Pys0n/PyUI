@@ -1,4 +1,5 @@
 from .pyui import PyUI
+from .stack import Stack
 from .styles import TextColor, TextStyles, TextInputMode, BackgroundColor
 from .Widgets.button import Button
 from .Widgets.expandable import Expandable
@@ -9,6 +10,7 @@ from .Widgets.toggle_switch import ToggleSwitch
 
 __all__ = [
     "PyUI",
+    "Stack",
     "TextColor",
     "BackgroundColor",
     "TextStyles",

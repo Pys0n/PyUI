@@ -30,6 +30,7 @@ python -m pip install git+https://github.com/Pys0n/PyUI.git
 # PyUI Documentation
 
 - [PyUI](#pyui)
+- [Stack](#stack)
 - [Widgets](#widgets)
     - [Button](#button)
     - [Expandable](#expandable)
@@ -116,6 +117,58 @@ Sets the background color of the UI to `background_color`.
 
 ### .update_size() -> tuple
 Updates the UI's size to the terminal size and returns the new size as tuple (`(width, height)`).
+
+
+## Stack
+
+The stack allows you to change via button presses or other events between multiple PyUI's.
+
+To create a new Stack use these lines of code:
+```python
+from PyUI import Stack
+
+stack = Stack()
+```
+
+### .\_\_str\_\_() -> str
+Returns the current UI as a string.
+
+
+### .add_ui(ui: PyUI) -> None
+Adds `ui` to the Stacks UI's.
+
+
+### .clear_uis() -> None
+Removes all UI's from the Stack.
+
+
+### .get_current_index() -> int
+Returns the index of the current UI.
+
+
+### .get_current_ui() -> PyUI
+Returns the UI at the current index.
+
+
+### .get_uis() -> list
+Returns a list of all UI's in the Stack.
+
+
+### .insert_ui(index: int, ui: PyUI) -> None
+Inserts `ui` at position `index` to the Stacks UI's.
+
+
+### .print() -> None
+Calls the `.print()`-function on the current UI.
+
+
+### .remove_ui(ui: PyUI) -> None
+Removes `ui` from the Stacks UI's.
+
+
+### .set_current_index(index: int) -> None
+Sets the current UI to the UI at the position `index`.
+
 
 ## Widgets
 
